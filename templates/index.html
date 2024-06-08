@@ -4,5 +4,55 @@
 
 {% block content %}
 <h2>Welcome to the Nutritional Management System</h2>
-<p>#TODO</p>
+<button onclick="showForm('insertForm')">Insert Data</button>
+<button onclick="showForm('deleteForm')">Delete Data</button>
+<button onclick="showForm('updateForm')">Update Data</button>
+
+<div id="insertForm" style="display: none;">
+    <h3>Insert Data Form</h3>
+    <form action="/submit" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div id="deleteForm" style="display: none;">
+    <h3>Delete Data Form</h3>
+    <form action="/submit" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div id="updateForm" style="display: none;">
+    <h3>Update Data Form</h3>
+    <form action="/submit" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
 {% endblock %}

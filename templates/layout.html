@@ -14,18 +14,23 @@
 
 <nav>
     <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
-    <a href="/contact">Contact</a>
     <a href="https://github.com/row-huh/Nutritional-Management-System" target="_blank">View Project on Github</a>
 </nav>
 
-<div class="content">
+<div>
     {% block content %}{% endblock %}
 </div>
 
 <footer>
     <p>&copy; 2024 Nutritional Management System</p>
 </footer>
+
+<script>
+    function showForm(formId) {
+        const formContainer = document.getElementById(formId);
+        formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
 
 </body>
 </html>

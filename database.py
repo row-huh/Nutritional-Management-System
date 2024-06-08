@@ -20,10 +20,12 @@ def delete_date():
     #TODO
     ...
 
+
 def update_data():
     #TODO
     ...
-    
+
+
 def query_date():
     #TODO
     ...
