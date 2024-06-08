@@ -11,6 +11,12 @@ connection = oracledb.connect(
 cursor = connection.cursor()
 
 
+'''
+Each of the functions below will take in parameters
+required to perform an operation such as to insert a new 
+entry in data, we'll need "calorie-figure" or whatever other fields are
+'''
+
 def insert_data():
     #TODO
     ...
