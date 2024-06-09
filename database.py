@@ -196,7 +196,7 @@ for sql in insert_data_sql.split(';'):
 
 
 # CRUD OPERATIONS
-
+# INSERT FUNCTIONS
 # insert food
 def insert_food_item(data, connection):
     try:
@@ -206,9 +206,10 @@ def insert_food_item(data, connection):
         # Prepare the SQL statement
         sql = "INSERT INTO Food_Item (name, calories, protein, carbs, fats) VALUES (:name, :calories, :protein, :carbs, :fats)"
 
+        test_sql = "SELECT * FROM Food_Item;"
         # Execute the SQL statement with the provided data
         cursor.execute(sql, data)
-
+        cursor.execute(test_sql)
         # Commit the transaction
         connection.commit()
 
@@ -245,6 +246,15 @@ def insert_patient(data, connection):
     #TODO
     ...
 
+
+
+# DELETE FUNCTIONS
+
+
+# UPDATE FUNCTIONS
+
+
+# SQL QUERY FUNCTION
 
 # Commit the transaction
 connection.commit()
