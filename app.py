@@ -7,6 +7,7 @@ connection = database.initialize_database()
 
 
 # landing page
+
 @app.route('/')
 def index():
     return render_template('test.html')
