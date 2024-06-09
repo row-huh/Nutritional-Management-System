@@ -3,6 +3,8 @@ import database
 
 
 app = Flask(__name__)
+connection = database.initialize_database()
+
 
 # landing page
 @app.route('/')
@@ -17,8 +19,7 @@ def write_query():
 @app.route('/submit_food', methods=['POST'])
 def submit_food():
     form_data = request.form.to_dict()
-    database.insert_food_item()
-    print("something went wrong")
+    database.insert_food_item(form_data, connection)
     message= "New food item created successfully"
     return render_template('test.html', message=message)
 
