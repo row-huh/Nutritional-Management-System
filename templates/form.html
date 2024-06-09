@@ -16,17 +16,38 @@
         </div>
       </div>
       <div class="flex-justify" id="formContainer" style="display: none;">
-        <form>
+        <div>
           <label for="name">Name:</label>
           <input class="input-fields" type="text" id="name" name="name"><br><br>
           <label for="email">Email:</label>
           <input class="input-fields" type="email" id="email" name="email"><br><br>
-          <input class="showFormBtn" type="submit" value="Submit">
-        </form>
+          <button class="showFormBtn" onclick="loginAuth()">Submit</button>
+        </div>
       </div>
     </div>
     </div>
-    
+    <script>  
+    let loginAuth = ()=>{
+      let userName = document.getElementById('name').value
+      let email = document.getElementById('email').value
+      let user1 = {
+        "userName": "laiba",
+        "userEmail" : "laiba@gmail.com"
+      }
+      let user2 = {
+        "userName": "roha",
+        "userEmail" : "roha@gmail.com"
+      }
+      if ((user1.userName === userName && user1.userEmail=== email)||
+      (user2.userName === userName && user2.userEmail=== email))
+      {
+        window.location.href = 'dashboard.html';
+      }
+      else{
+        alert("User not found")
+      }
+    }
+    </script>
 
   <script>
     // Get references to the button and form container
