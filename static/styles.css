@@ -2,11 +2,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
+    margin: 10px 10px;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #579659;
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -45,4 +46,45 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+.showFormBtn{
+    background-color: rgb(81, 219, 81);
+    padding: 8px 10px;
+    color: white;
+    margin: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+}
+.showFormBtn:hover{
+    background-color: rgb(45, 156, 45);
+    transform: scale(1.1);
+}
+
+.form-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     
+}
+.form-container{
+    padding: 20px 20px;
+    background-color: rgb(246, 243, 243);
+    border-radius: 20px;
+    border: 2px solid rgb(169, 249, 169);
+}
+
+.flex-justify{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.input-fields{
+    border-radius: 10px;
+    padding: 8px;
+    border: 2px solid rgb(169, 249, 169);
+
 }
