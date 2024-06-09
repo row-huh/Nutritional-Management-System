@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}Home - Nutritional Management System{% endblock %}
+
+
+
+{% block content %}
+{% if message %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class="alert alert-primary" role="alert">
+    {{ message }}
+</div>
+{% endif %}
+<h2>Welcome to the Nutritional Management System</h2>
+<button onclick="showForm('insertForm')">Insert Data</button>
+<button onclick="showForm('deleteForm')">Delete Data</button>
+<button onclick="showForm('updateForm')">Update Data</button>
+
+<div id="insertForm" style="display: none;">
+    <h3>Insert Fooditem Form</h3>
+    <form action="/submit_food" method="POST">
+        <label for="name">Food Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="calories">calories:</label><br>
+        <input type="number" id="name" name="name" required><br><br>
+
+        <label for="protein">Protein: </label><br>
+        <input type="number" id="name" name="name" required><br><br>
+
+        <label for="Carbs">Carbs:</label><br>
+        <input type="number" id="name" name="name" required><br><br>
+
+        <label for="fats">Fats:</label><br>
+        <input type="number" id="name" name="name" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}
