@@ -88,3 +88,19 @@ footer {
     border: 2px solid rgb(169, 249, 169);
 
 }
+
+.patient-form{
+    display: none;
+}
+.nut-form{
+    display: none;
+}
+.meal-form{
+    display: none;
+}
+.food-form{
+    display: none;
+}
+.fitness-form{
+    display: none;
+}

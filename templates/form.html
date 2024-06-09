@@ -12,15 +12,15 @@
       <div>
         <h2>Nutritional Management System</h2>
         <div class="flex-justify">
-          <button class="showFormBtn" id="showFormBtn">Show Form</button>
+          <button class="showFormBtn" id="showFormBtn">Login</button>
         </div>
       </div>
       <div class="flex-justify" id="formContainer" style="display: none;">
         <div>
           <label for="name">Name:</label>
           <input class="input-fields" type="text" id="name" name="name"><br><br>
-          <label for="email">Email:</label>
-          <input class="input-fields" type="email" id="email" name="email"><br><br>
+          <label for="password">Email:</label>
+          <input class="input-fields" type="password" id="password" name="password"><br><br>
           <button class="showFormBtn" onclick="loginAuth()">Submit</button>
         </div>
       </div>
@@ -29,17 +29,13 @@
     <script>  
     let loginAuth = ()=>{
       let userName = document.getElementById('name').value
-      let email = document.getElementById('email').value
+      let password = document.getElementById('password').value
       let user1 = {
-        "userName": "laiba",
-        "userEmail" : "laiba@gmail.com"
+        "userName": "admin",
+        "password" : "12345"
       }
-      let user2 = {
-        "userName": "roha",
-        "userEmail" : "roha@gmail.com"
-      }
-      if ((user1.userName === userName && user1.userEmail=== email)||
-      (user2.userName === userName && user2.userEmail=== email))
+     
+      if (user1.userName === userName && user1.password=== password)
       {
         window.location.href = 'dashboard.html';
       }
