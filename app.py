@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -12,11 +12,15 @@ def write_query():
     #TODO
     ...
 
-@app.route('/submit', methods=['POST'])
-def submit_form():
-    print("from received")
-    message = "Form submitted succesfully"
+@app.route('/submit_food', methods=['POST'])
+def submit_food():
+    form_data = request.form.to_dict()
+    
+    print(form_data)
+    message= "New food item created successfully"
     return render_template('index.html', message=message)
+
+
 
 if __name__== '__main__':
     app.run(debug=True)

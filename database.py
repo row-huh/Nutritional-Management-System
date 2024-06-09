@@ -195,6 +195,56 @@ for sql in insert_data_sql.split(';'):
 
 
 
+# CRUD OPERATIONS
+
+# insert food
+def insert_food_item(data, connection):
+    try:
+        # Create a cursor object from the existing connection
+        cursor = connection.cursor()
+
+        # Prepare the SQL statement
+        sql = "INSERT INTO Food_Item (name, calories, protein, carbs, fats) VALUES (:name, :calories, :protein, :carbs, :fats)"
+
+        # Execute the SQL statement with the provided data
+        cursor.execute(sql, data)
+
+        # Commit the transaction
+        connection.commit()
+
+        print("Food item inserted successfully.")
+
+    except oracledb.DatabaseError as e:
+        error, = e.args
+        print(f"Error inserting food item: {error.message}")
+
+    finally:
+        # Close the cursor
+        cursor.close()
+
+
+# insert fitness data
+def insert_fitness_data(data, connection):
+    #TODO
+    ...
+    
+    
+# insert meal plan
+def insert_meal_plan(data, connection):
+    #TODO
+    ...
+
+# insert nutritionist
+def insert_nutritionist(data, connection):
+    #TODO
+    ...
+
+
+# insert patient
+def insert_patient(data, connection):
+    #TODO
+    ...
+
 
 # Commit the transaction
 connection.commit()
