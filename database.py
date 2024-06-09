@@ -192,6 +192,10 @@ for sql in insert_data_sql.split(';'):
             print(f"Error executing SQL: {e}")
             print(f"Help: https://docs.oracle.com/error-help/db/{e.args[0].code}/")
 
+
+
+
+
 # Commit the transaction
 connection.commit()
 

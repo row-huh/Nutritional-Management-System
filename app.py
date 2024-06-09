@@ -14,7 +14,15 @@ def write_query():
 
 @app.route('/submit', methods=['POST'])
 def submit_form():
-    return Response('Haha, I GOT YOUR INFORMATION NOW')
+    print("from received")
+    message = "Form submitted succesfully"
+    return render_template('index.html', message=message)
 
 if __name__== '__main__':
     app.run(debug=True)
+    
+    
+    
+# insert = "submit_<able_name>"
+# delete = "delete_<able_name>"
+# update = "update_<able_name>"
