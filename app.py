@@ -17,10 +17,8 @@ def write_query():
 @app.route('/submit_food', methods=['POST'])
 def submit_food():
     form_data = request.form.to_dict()
-    try:
-        database.insert_food_item()
-    except:
-        print("something went wrong")
+    database.insert_food_item()
+    print("something went wrong")
     message= "New food item created successfully"
     return render_template('test.html', message=message)
 
