@@ -209,7 +209,8 @@ def insert_food_item(data, connection):
         test_sql = "SELECT * FROM Food_Item;"
         # Execute the SQL statement with the provided data
         cursor.execute(sql, data)
-        cursor.execute(test_sql)
+        output = cursor.execute(test_sql)
+        print(output)
         # Commit the transaction
         connection.commit()
 
