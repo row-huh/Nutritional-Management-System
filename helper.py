@@ -1,16 +1,39 @@
 import database as db
 
 def format_data_as_html_table(data):
-    html_table = "<table border='1'><tr><th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Email</th></tr>"
-    
+    html_table = """
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Email</th>
+        </tr>
+    """
+
     for row in data:
         html_table += "<tr>"
         for item in row:
             html_table += "<td>{}</td>".format(item)
         html_table += "</tr>"
-    
+
     html_table += "</table>"
-    
     return html_table
 
 
