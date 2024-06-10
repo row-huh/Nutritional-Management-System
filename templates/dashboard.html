@@ -340,6 +340,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwentyTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwentyTwo" aria-expanded="false" aria-controls="flush-collapseTwentyTwo">
+                            View Information
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwentyTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwentyTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            {% if all_meal_plan %}
+                                {{ all_meal_plan | safe }}
+                            {% endif %}
+                        </div>
+                    </div>  
+                </div>
             </div>
         </div>
         <div class="food-form">
@@ -539,22 +555,20 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwentyOne">
+                    <h2 class="accordion-header" id="flush-headingTwentyTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseTwentyOne" aria-expanded="false"
-                            aria-controls="flush-collapseTwentyOne">
+                            data-bs-target="#flush-collapseTwentyTwo" aria-expanded="false" aria-controls="flush-collapseTwentyTwo">
                             View Information
                         </button>
                     </h2>
-                    <div id="flush-collapseTwentyOne" class="accordion-collapse collapse"
-                        aria-labelledby="flush-headingTwentyOne" data-bs-parent="#accordionFlushExample">
+                    <div id="flush-collapseTwentyTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwentyTwo"
+                        data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="QUERY">
-                                <input type="text">
-                                <button>Query</button>
-                            </form>
+                            {% if all_fitness_data %}
+                                {{ all_fitness_data | safe }}
+                            {% endif %}
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
