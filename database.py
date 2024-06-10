@@ -203,6 +203,9 @@ def run_sql_query(query, connection):
     finally:
         cursor.close()
 
+
+
+
 # Example Usage:
 if __name__ == "__main__":
     # Establish the database connection
