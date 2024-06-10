@@ -107,10 +107,16 @@
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="UPDATE">
-                                <input type="text">
+                            <form action="/get_patient_data">
+                                <label for="patient_id">Enter Patient_ID</label>
+                                <input type="Number" >
                                 <button>Update</button>
                             </form>
+                            <button id="viewTablesButton">View Tables</button>
+                            <div id="tableDataContainer" style="display: none;">
+                                <!-- Data will appear here when fetched -->
+                                {{ all_patients | safe }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -125,7 +131,7 @@
                     <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="QUERY">
+                            <form action="/">
                                 <input type="text">
                                 <button>Query</button>
                             </form>
@@ -209,10 +215,13 @@
                     <div id="flush-collapseEight" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="QUERY">
-                                <input type="text">
-                                <button>Query</button>
+                            <form action="/run_query" method="POST">
+                                <input type="text" id="query" name="query">
+                                <button>Run Query</button>
                             </form>
+                            {% if query_result %}
+                                {{ query_result | safe }}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -543,6 +552,26 @@
 
         }
     </script>
+
+    <script>
+        // Function to handle the click event of the "View Tables" button
+        document.getElementById("viewTablesButton").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the table data container
+            var tableDataContainer = document.getElementById("tableDataContainer");
+
+            // Toggle the visibility of the table data container
+            if (tableDataContainer.style.display === "none" || tableDataContainer.style.display === "") {
+                tableDataContainer.style.display = "block"; // Show the container
+            } else {
+                tableDataContainer.style.display = "none"; // Hide the container
+            }
+        });
+    </script>
+
+
+
 </body>
 
 </html>

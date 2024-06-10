@@ -246,8 +246,8 @@ def update_record(table_name, column_name, record_id, update_data, connection):
 
 # Run a custom SQL query
 def run_sql_query(query, connection):
+    cursor = connection.cursor()
     try:
-        cursor = connection.cursor()
         cursor.execute(query)
         results = cursor.fetchall()
         return results

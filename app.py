@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import database as db
 import database_setup as dbsetup
-
+import helper as h
 
 app = Flask(__name__)
 connection = dbsetup.initialize_database()
@@ -12,7 +12,9 @@ landing_page = 'dashboard.html'
 # landing page
 @app.route('/')
 def index():
-    return render_template(landing_page, message=None)
+    all_patients = db.fetch_patients(connection)
+    all_patients = h.format_data_as_html_table(all_patients)
+    return render_template(landing_page, message=None, all_patients=all_patients)
 
 
 # insert food item
@@ -131,10 +133,20 @@ def delete_fitness_data():
         return render_template(landing_page, err_message=err_message, message=None)
 
 
-@app.route('/write_query')
-def write_query():
-    #TODO
-    ...
+@app.route('/run_query', methods=['POST'])
+def run_query():
+    query = request.form.get('query')
+    print(query)
+
+    results = db.run_sql_query(query, connection)
+
+    if results:
+        results = h.format_data_as_html_table(results)
+        message = "Query Ran Successfully"
+        return render_template(landing_page, message=message, err_message=None, query_result=results)
+    else:
+        err_message = "Query did not run successfully"
+        return render_template(landing_page, message=None, err_message=err_message)
 
 
 
