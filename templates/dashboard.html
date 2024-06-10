@@ -433,6 +433,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwentyTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwentyTwo" aria-expanded="false" aria-controls="flush-collapseTwentyTwo">
+                            View Information
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwentyTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwentyTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            {% if all_food_items %}
+                                {{ all_food_items | safe }}
+                            {% endif %}
+                        </div>
+                    </div>  
+                </div>
             </div>
         </div>
         <div class="fitness-form">
