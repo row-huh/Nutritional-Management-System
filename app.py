@@ -194,9 +194,17 @@ def fetch_patient_details():
 @app.route('/update_food_item', methods=["POST"])
 def update_food_item():
     updates = request.form.to_dict()
-
-
-
+    print("Updates", updates)
+    record_id = updates['food_item_id']
+    print("Record id", record_id)
+    result = db.update_record('food_item', h.food_item_columns, record_id=record_id, update_data=updates, connection=connection)
+    print("RESULT", result)
+    if result:
+        message = result
+        return render_template(landing_page, message=message)
+    else:
+        err_message = "Something went wrong"
+        return render_template(landing_page, message=None, err_message=err_message)
 
 
 # run query

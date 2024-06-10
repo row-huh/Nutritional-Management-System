@@ -227,19 +227,23 @@ def delete_record(table_name, column_name, record_id, connection):
 
 
 # Update a record by ID
-def update_record(table_name, column_name, record_id, update_data, connection):
+def update_record(table_name, columns, record_id, update_data, connection):
+
     try:
         cursor = connection.cursor()
-        set_clause = ", ".join([f"{col} = :{col}" for col in update_data.keys()])
-        sql = f"UPDATE {table_name} SET {set_clause} WHERE {column_name} = :record_id"
-        update_data["record_id"] = record_id
+        update_fields = ', '.join([f"{col} = :{col}" for col in update_data.keys()])
+        sql = f"UPDATE {table_name} SET {update_fields} WHERE {columns[0]} = :table_id"  # Assuming the first column is the primary key
+        update_data["table_id"] = record_id
         cursor.execute(sql, update_data)
         connection.commit()
         print(f"Record with ID {record_id} updated in {table_name}.")
+        return (f"Record with ID {record_id} updated in {table_name}.")
 
     except oracledb.DatabaseError as e:
         error, = e.args
         print(f"Error updating record in {table_name}: {error.message}")
+        return None
+
 
     finally:
         cursor.close()

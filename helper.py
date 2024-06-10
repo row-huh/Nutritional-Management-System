@@ -45,7 +45,7 @@ def format_data_as_html_table(data):
     html_table += "</table>"
     return html_table
 
-
+# used to generate a table for displaying
 def html_data(connection):
     all_patients = db.fetch_patients(connection)
     all_nutritionists = db.fetch_nutritionists(connection)
@@ -62,14 +62,30 @@ def html_data(connection):
 
     return all_patients, all_nutritionists, all_fitness_data, all_food_items, all_meal_plans
 
-
+# used for getting html form for updating data
 def get_update_html(title, data):
     if title.lower() == 'food_item':
         html = row_to_html(title, food_item_columns, data)
         print(html)
         return html
+    elif title.lower() == 'patient':
+        html = row_to_html(title, patient_columns, data)
+        print(html)
+        return html
+    elif title.lower() == 'meal_plan':
+        html = row_to_html(title, meal_plan_columns, data)
+        print(html)
+        return html
+    elif title.lower() == 'nutritionist':
+        html = row_to_html(title, nutritionist_columns, data)
+        print(html)
+        return html
+    elif title.lower() == 'fitness_data':
+        html = row_to_html(title, fitness_data_columns, data)
+        print(html)
+        return html
     else:
-        print('hehe')
+        print('SOMETHING WENT WRONG - maybe wrong table name is being passed')
 
 
 def row_to_html(title, columns, data):
