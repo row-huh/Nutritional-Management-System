@@ -256,6 +256,22 @@ def run_sql_query(query, connection):
     cursor = connection.cursor()
     try:
         cursor.execute(query)
+        results = cursor.fetchall()
+        return results
+
+    except oracledb.DatabaseError as e:
+        error, = e.args
+        print(f"Error executing query: {error.message}")
+        return []
+
+    finally:
+        cursor.close()
+
+# Run a custom SQL query (only for separate queries, no function calling within)
+def run_sql_query_exclusive(query, connection):
+    cursor = connection.cursor()
+    try:
+        cursor.execute(query)
         html_table = h.query_response_to_html_table(cursor)
         print(html_table)
         return html_table
@@ -267,5 +283,3 @@ def run_sql_query(query, connection):
 
     finally:
         cursor.close()
-
-

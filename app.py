@@ -184,7 +184,9 @@ def fetch_fitness_data_details():
 def fetch_patient_details():
     patient_id = request.form.get('patient_id')
     query = f"SELECT * FROM Patient WHERE patient_id={patient_id}"
+    print("QUERY", query)
     data = db.run_sql_query(query, connection)
+    print("DATA",data)
     html_form = h.get_update_html('patient', data)
     return render_template('update.html', html_form=html_form)
 
@@ -282,7 +284,7 @@ def run_query():
     query = request.form.get('description')
     print(query)
 
-    html_table = db.run_sql_query(query, connection)
+    html_table = db.run_sql_query_exclusive(query, connection)
 
     if html_table:
         message = "Query Ran Successfully"
