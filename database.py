@@ -162,10 +162,11 @@ def delete_record(table_name, column_name, record_id, connection):
         cursor.execute(sql, {"record_id": record_id})
         connection.commit()
         print(f"Record with ID {record_id} deleted from {table_name}.")
-
+        return "Sucess"
     except oracledb.DatabaseError as e:
         error, = e.args
         print(f"Error deleting record from {table_name}: {error.message}")
+        return None
 
     finally:
         cursor.close()

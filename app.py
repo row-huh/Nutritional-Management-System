@@ -61,11 +61,80 @@ def submit_fitness_data():
 
 
 
+# delete food_item
+@app.route('/delete_food_item', methods=['POST'])
+def delete_food_item():
+    id = request.form.get('food_item_id')
+    print(id)
+    
+    if db.delete_record('food_item', 'food_item_id', id, connection):
+        message= f"Food item with id {id} deleted successfully"
+        return render_template(landing_page, message=message, err_message=None)
+    else:
+        err_message= f"Something went wrong with deleting"
+        return render_template(landing_page, err_message=err_message, message=None)
+
+
+# delete nutritionist
+@app.route('/delete_nutritionist', methods=['POST'])
+def delete_nutritionist():
+    id = request.form.get('nutritionist_id')
+    print(id)
+    
+    if db.delete_record('nutritionist', 'nutritionist_id', id, connection):
+        message= f"Nutritionist with id {id} deleted successfully"
+        return render_template(landing_page, message=message, err_message=None)
+    else:
+        err_message= f"Something went wrong with deleting"
+        return render_template(landing_page, err_message=err_message, message=None)
+
+
+# delete patient
+@app.route('/delete_patient', methods=['POST'])
+def delete_patient():
+    id = request.form.get('patient_id')
+    print(id)
+    
+    if db.delete_record('patient', 'patient_id', id, connection):
+        message= f"Patient with id {id} deleted successfully"
+        return render_template(landing_page, message=message, err_message=None)
+    else:
+        err_message= f"Something went wrong with deleting"
+        return render_template(landing_page, err_message=err_message, message=None)
+
+
+# delete meal_plan
+@app.route('/delete_meal_plan', methods=['POST'])
+def delete_meal_plan():
+    id = request.form.get('meal_plan_id')
+    print(id)
+    
+    if db.delete_record('meal_plan', 'meal_plan_id', id, connection):
+        message= f"Meal plan with id {id} deleted successfully"
+        return render_template(landing_page, message=message, err_message=None)
+    else:
+        err_message= f"Something went wrong with deleting"
+        return render_template(landing_page, err_message=err_message, message=None)
+
+
+# delete fitness_data
+@app.route('/delete_fitness_data', methods=['POST'])
+def delete_fitness_data():
+    id = request.form.get('fitness_data_id')
+    print(id)
+    
+    if db.delete_record('fitness_data', 'fitness_data_id', id, connection):
+        message= f"Fitness data with id {id} deleted successfully"
+        return render_template(landing_page, message=message, err_message=None)
+    else:
+        err_message= f"Something went wrong with deleting"
+        return render_template(landing_page, err_message=err_message, message=None)
+
+
 @app.route('/write_query')
 def write_query():
     #TODO
     ...
-
 
 
 
