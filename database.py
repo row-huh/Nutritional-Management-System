@@ -153,6 +153,7 @@ def fetch_nutritionists(connection):
 def fetch_fitness_data(connection):
     return fetch_all_records("Fitness_Data", connection)
 
+
 # Delete a record by ID
 def delete_record(table_name, column_name, record_id, connection):
     try:

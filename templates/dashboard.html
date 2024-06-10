@@ -10,6 +10,14 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
+
+{% if message %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class="alert alert-primary" role="alert">
+    {{ message }}
+</div>
+{% endif %}
+
 <body>
     <h3 class="text-center my-3 "><span class="text-success">Nutritional Management System</span>  </h3>
     <div class="d-flex m-2 justify-content-between">
@@ -46,7 +54,7 @@
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="cols" action="/submit_patient">
+                            <form class="cols" action="/submit_patient" method="POST">
                                 <label for="name">Enter your Name
                                     <input class="form-control" type="text" id="name" name="name">
                                 </label><br>
@@ -56,8 +64,8 @@
                                 <label for="gender">Enter your Gender
                                     <input class="form-control" type="text" id="gender" name="gender">
                                 </label><br>
-                                <label for="phone">Enter your phone
-                                    <input class="form-control" type="tel" id="phone" name="phone">
+                                <label for="contact_info">Enter your Phone
+                                    <input class="form-control" type="tel" id="contact_info" name="contact_info">
                                 </label><br>
                                 <button>Add Data</button>
                             </form>
@@ -133,15 +141,15 @@
                     <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="cols" action="/submit_nutritionist">
+                            <form class="cols" action="/submit_nutritionist" method="POST">
                                 <label for="name">Enter your Name
                                     <input class="form-control" type="text" id="name" name="name">
                                 </label><br>
-                                <label for="speciality">Enter Speciality
-                                    <input class="form-control" type="text" id="speciality" name="speciality">
+                                <label for="specialty">Enter Specialty
+                                    <input class="form-control" type="text" id="specialty" name="specialty">
                                 </label><br>
-                                <label for="phone">Enter your phone
-                                    <input class="form-control" type="tel" id="phone" name="phone">
+                                <label for="contact_info">Enter your phone
+                                    <input class="form-control" type="tel" id="contact_info" name="contact_info">
                                 </label><br>
                                 <button>Add Data</button>
                             </form>
@@ -217,14 +225,14 @@
                     <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="cols" action="submit_meal_plan">
-                                <label for="sdate">Enter Start Date
-                                    <input class="form-control my-2" type="date" id="sdate" name="sdate">
+                            <form class="cols" action="submit_meal_plan" method="POST">
+                                <label for="start_date">Enter Start Date
+                                    <input class="form-control my-2" type="date" id="start_date" name="start_date">
                                 </label><br>
-                                <label for="edate">Enter End Date
-                                    <input class="form-control my-2" type="date" id="edate" name="edate">
+                                <label for="end_date">Enter End Date
+                                    <input class="form-control my-2" type="date" id="end_date" name="end_date">
                                 </label><br>
-                                <textarea class="form-control my-2" name="desc" id="desc"></textarea>
+                                <textarea class="form-control my-2" name="description" id="description"></textarea>
                                 <button>Add Data</button>
                             </form>
                         </div>
@@ -299,7 +307,7 @@
                     <div id="flush-collapseThirteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThirteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="cols" action="/submit_food_item">
+                            <form class="cols" action="/submit_food_item" method="POST">
                                 <label for="foodname">Name
                                     <input class="form-control my-2" type="name" id="foodname" name="foodname">
                                 </label><br>
@@ -391,7 +399,7 @@
                     <div id="flush-collapseSeventeen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingSeventeen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="cols" action="/submit_fitness_data">
+                            <form class="cols" action="/submit_fitness_data" method="POST">
                                 <label for="weight">Weight
                                     <input class="form-control my-2" type="number" id="weight" name="weight">
                                 </label><br>
