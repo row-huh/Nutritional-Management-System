@@ -437,8 +437,8 @@
                     <div id="flush-collapseEighteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingEighteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="/delete_fitness_data" id="fitness_data_id" name="fitness_data_id">
-                                <input type="text">
+                            <form action="/delete_fitness_data" method="POST">
+                                <input type="number" id="fitness_data_id" name="fitness_data_id">
                                 <button>Delete</button>
                             </form>
                         </div>
