@@ -7,7 +7,7 @@ app = Flask(__name__)
 connection = dbsetup.initialize_database()
 
 
-landing_page = 'test.html'
+landing_page = 'dashboard.html'
 
 # landing page
 @app.route('/')
