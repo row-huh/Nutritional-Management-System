@@ -20,13 +20,13 @@ def index():
 
 
 # insert food item
-@app.route('/submit_food', methods=['POST'])
+@app.route('/submit_food_item', methods=['POST'])
 def submit_food():
     form_data = request.form.to_dict()
     db.insert_food_item(form_data, connection)
     message= "New food item created successfully"
-    index(message=message)
 
+    return render_template(landing_page, message=message)
 
 # insert patient
 @app.route('/submit_patient', methods=['POST'])
@@ -198,6 +198,74 @@ def update_food_item():
     record_id = updates['food_item_id']
     print("Record id", record_id)
     result = db.update_record('food_item', h.food_item_columns, record_id=record_id, update_data=updates, connection=connection)
+    print("RESULT", result)
+    if result:
+        message = result
+        return render_template(landing_page, message=message)
+    else:
+        err_message = "Something went wrong"
+        return render_template(landing_page, message=None, err_message=err_message)
+
+
+
+# update nutritionist
+@app.route('/update_nutritionist', methods=["POST"])
+def update_nutritionist():
+    updates = request.form.to_dict()
+    print("Updates", updates)
+    record_id = updates['nutritionist_id']
+    print("Record id", record_id)
+    result = db.update_record('nutritionist', h.nutritionist_columns, record_id=record_id, update_data=updates, connection=connection)
+    print("RESULT", result)
+    if result:
+        message = result
+        return render_template(landing_page, message=message)
+    else:
+        err_message = "Something went wrong"
+        return render_template(landing_page, message=None, err_message=err_message)
+
+# update fintess data
+@app.route('/update_fitness_data', methods=["POST"])
+def update_fitness_data():
+    updates = request.form.to_dict()
+    print("Updates", updates)
+    record_id = updates['fitness_data_id']
+    print("Record id", record_id)
+    result = db.update_record('fitness_data', h.fitness_data_columns, record_id=record_id, update_data=updates, connection=connection)
+    print("RESULT", result)
+    if result:
+        message = result
+        return render_template(landing_page, message=message)
+    else:
+        err_message = "Something went wrong"
+        return render_template(landing_page, message=None, err_message=err_message)
+
+
+# update meal plan
+@app.route('/update_meal_plan', methods=["POST"])
+def update_meal_plan():
+    updates = request.form.to_dict()
+    print("Updates", updates)
+    record_id = updates['meal_plan_id']
+    print("Record id", record_id)
+    result = db.update_record('meal_plan', h.meal_plan_columns, record_id=record_id, update_data=updates, connection=connection)
+    print("RESULT", result)
+    if result:
+        message = result
+        return render_template(landing_page, message=message)
+    else:
+        err_message = "Something went wrong"
+        return render_template(landing_page, message=None, err_message=err_message)
+
+
+# update patient
+@app.route('/update_patient', methods=["POST"])
+def update_patient():
+    updates = request.form.to_dict()
+    print("Updates", updates)
+    record_id = updates['patient_id']
+    print("Record id", record_id)
+    result = db.update_record('patient', h.patient_columns, record_id=record_id, update_data=updates, connection=connection)
     print("RESULT", result)
     if result:
         message = result
