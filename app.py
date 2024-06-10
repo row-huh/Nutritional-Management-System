@@ -50,6 +50,7 @@ def submit_nutritionist():
 @app.route('/submit_meal_plan', methods=['POST'])
 def submit_meal_plan():
     form_data = request.form.to_dict()
+    print(form_data)
     db.insert_meal_plan(form_data, connection)
     message= "New meal plan created successfully"
     return render_template(landing_page, message=message)

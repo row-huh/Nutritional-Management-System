@@ -62,7 +62,7 @@ def insert_meal_plan(data, connection):
         ids = cursor.fetchall()
         meal_plan_id = generate_unique_id(ids)
 
-        sql = f"INSERT INTO Meal_Plan (meal_plan_id, patient_id, nutritionist_id, start_date, end_date, description) VALUES ({meal_plan_id}, :patient_id, :nutritionist_id, :start_date, :end_date, :description)"
+        sql = f"INSERT INTO Meal_Plan (meal_plan_id, patient_id, nutritionist_id, start_date, end_date, description) VALUES ({meal_plan_id}, :patient_id, :nutritionist_id, TO_DATE(:start_date, 'YYYY-MM-DD'), TO_DATE(:end_date, 'YYYY-MM-DD'), :description)"
         cursor.execute(sql, data)
         connection.commit()
         print("Meal plan inserted successfully.")
@@ -123,8 +123,6 @@ def fetch_all_records(table_name, connection):
         sql = f"SELECT * FROM {table_name}"
         cursor.execute(sql)
         records = cursor.fetchall()
-        print("RECORDS")
-        print(records)
         return records
 
     except oracledb.DatabaseError as e:
