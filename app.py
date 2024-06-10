@@ -51,7 +51,7 @@ def submit_nutritionist():
 def submit_meal_plan():
     form_data = request.form.to_dict()
     db.insert_meal_plan(form_data, connection)
-    message= "New meal_plan created successfully"
+    message= "New meal plan created successfully"
     return render_template(landing_page, message=message)
 
 
