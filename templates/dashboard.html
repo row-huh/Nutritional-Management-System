@@ -89,8 +89,8 @@
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="DELETE">
-                                <input type="text">
+                            <form action="/delete_patient" method="POST">
+                                <input type="number" id="patient_id" name="patient_id">
                                 <button>Delete</button>
                             </form>
                         </div>
@@ -173,8 +173,8 @@
                     <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="DELETE">
-                                <input type="text">
+                            <form action="/delete_nutritionist" method="POST">
+                                <input type="number" id="nutritionist_id" name="nutritionist_id">
                                 <button>Delete</button>
                             </form>
                         </div>
@@ -255,8 +255,8 @@
                     <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="DELETE">
-                                <input type="text">
+                            <form action="/delete_meal_plan" method="POST">
+                                <input type="number" id="meal_plan_id" name="meal_plan_id">
                                 <button>Delete</button>
                             </form>
                         </div>
@@ -431,13 +431,13 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseEighteen" aria-expanded="false"
                             aria-controls="flush-collapseEighteen">
-                            Delete Data
+                            Delete Fitness Data
                         </button>
                     </h2>
                     <div id="flush-collapseEighteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingEighteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="DELETE">
+                            <form action="/delete_fitness_data" id="fitness_data_id" name="fitness_data_id">
                                 <input type="text">
                                 <button>Delete</button>
                             </form>

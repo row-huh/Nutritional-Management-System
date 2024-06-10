@@ -12,7 +12,7 @@ landing_page = 'dashboard.html'
 # landing page
 @app.route('/')
 def index():
-    return render_template(landing_page)
+    return render_template(landing_page, message=None)
 
 
 # insert food item
@@ -21,7 +21,7 @@ def submit_food():
     form_data = request.form.to_dict()
     db.insert_food_item(form_data, connection)
     message= "New food item created successfully"
-    return render_template('test.html', message=message)
+    index(message=message)
 
 
 # insert patient
