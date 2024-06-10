@@ -1,4 +1,5 @@
 import oracledb
+import helper as h
 
 # Helper function to generate a unique ID
 def generate_unique_id(ids):
@@ -102,6 +103,7 @@ def insert_patient(data, connection):
         get_ids = "SELECT patient_id FROM Patient"
         cursor.execute(get_ids)
         ids = cursor.fetchall()
+
         patient_id = generate_unique_id(ids)
 
         sql = f"INSERT INTO Patient (patient_id, name, age, gender, contact_info) VALUES ({patient_id}, :name, :age, :gender, :contact_info)"
@@ -254,13 +256,16 @@ def run_sql_query(query, connection):
     cursor = connection.cursor()
     try:
         cursor.execute(query)
-        results = cursor.fetchall()
-        return results
+        html_table = h.query_response_to_html_table(cursor)
+        print(html_table)
+        return html_table
 
     except oracledb.DatabaseError as e:
         error, = e.args
         print(f"Error executing query: {error.message}")
-        return []
+        return None
 
     finally:
         cursor.close()
+
+

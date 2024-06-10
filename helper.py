@@ -157,3 +157,123 @@ def generate_html_table_from_data(title, columns, data):
     </html>
     """
     return html
+
+
+def generate_html_table_from_query(title, columns, data):
+    if not data:
+        return "<p>No data available</p>"
+
+    html = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{title} Table</title>
+        <style>
+            table {{
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #ddd;
+            }}
+            th, td {{
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }}
+            th {{
+                background-color: #f2f2f2;
+            }}
+        </style>
+    </head>
+    <body>
+    
+    """
+
+    html += f"""
+    </table>
+    
+    <h2>{title} Data</h2>
+    
+    <table>
+        <tr>
+    """
+
+    for column in columns:
+        html += f"<th>{column}</th>"
+    html += "</tr>"
+
+    for row in data:
+        html += "<tr>"
+        for value in row:
+            if isinstance(value, datetime.datetime):
+                value = value.strftime("%Y-%m-%d %H:%M:%S")
+            html += f"<td>{value}</td>"
+        html += "</tr>"
+
+    html += """
+    </table>
+    
+    </body>
+    </html>
+    """
+    return html
+
+
+def query_response_to_html_table(cursor):
+    # Retrieve column names from the cursor description
+    column_names = [desc[0] for desc in cursor.description]
+
+    # Fetch all data from the cursor
+    data = cursor.fetchall()
+    
+    if not data:
+        return "<p>No data available</p>"
+
+    html = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Query Result Table</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #ddd;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+    <h2>Query Result Data</h2>
+    <table>
+        <tr>
+    """
+
+    for column in column_names:
+        html += f"<th>{column}</th>"
+    html += "</tr>"
+
+    for row in data:
+        html += "<tr>"
+        for value in row:
+            if isinstance(value, datetime.datetime):
+                value = value.strftime("%Y-%m-%d %H:%M:%S")
+            html += f"<td>{value}</td>"
+        html += "</tr>"
+
+    html += """
+    </table>
+    </body>
+    </html>
+    """
+    return html

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import database as db
 import database_setup as dbsetup
 import helper as h
+import time
 
 app = Flask(__name__)
 connection = dbsetup.initialize_database()
@@ -278,15 +279,14 @@ def update_patient():
 # run query
 @app.route('/run_query', methods=['POST'])
 def run_query():
-    query = request.form.get('query')
+    query = request.form.get('description')
     print(query)
 
-    results = db.run_sql_query(query, connection)
+    html_table = db.run_sql_query(query, connection)
 
-    if results:
-        results = h.format_data_as_html_table(results)
+    if html_table:
         message = "Query Ran Successfully"
-        return render_template(landing_page, message=message, err_message=None, query_result=results)
+        return render_template('query_result.html', message=message, err_message=None, html_table=html_table)
     else:
         err_message = "Query did not run successfully"
         return render_template(landing_page, message=None, err_message=err_message)
