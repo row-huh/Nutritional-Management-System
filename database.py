@@ -244,6 +244,7 @@ def update_record(table_name, column_name, record_id, update_data, connection):
     finally:
         cursor.close()
 
+
 # Run a custom SQL query
 def run_sql_query(query, connection):
     cursor = connection.cursor()
@@ -259,47 +260,3 @@ def run_sql_query(query, connection):
 
     finally:
         cursor.close()
-
-
-
-
-# Example Usage:
-if __name__ == "__main__":
-    # Establish the database connection
-    connection = oracledb.connect(
-        user='hr',
-        password='hr',
-        dsn='(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orclpdb)))'
-    )
-
-    # Insert a food item
-    food_data = {
-        "name": "Strawberry",
-        "calories": 32,
-        "protein": 0.7,
-        "carbs": 7.7,
-        "fats": 0.3
-    }
-    insert_food_item(food_data, connection)
-
-    # Fetch all food items
-    food_items = fetch_food_items(connection)
-    print(food_items)
-
-    # Delete a food item by ID
-    delete_record("Food_Item", "food_item_id", 1, connection)
-
-    # Update a food item by ID
-    update_data = {
-        "name": "Updated Strawberry",
-        "calories": 35
-    }
-    update_record("Food_Item", "food_item_id", 2, update_data, connection)
-
-    # Run a custom SQL query
-    custom_query = "SELECT * FROM Food_Item WHERE calories < 50"
-    results = run_sql_query(custom_query, connection)
-    print(results)
-
-    # Close the connection
-    connection.close()

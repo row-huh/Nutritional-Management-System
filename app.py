@@ -133,6 +133,10 @@ def delete_fitness_data():
         return render_template(landing_page, err_message=err_message, message=None)
 
 
+# update details
+
+
+# run query
 @app.route('/run_query', methods=['POST'])
 def run_query():
     query = request.form.get('query')
