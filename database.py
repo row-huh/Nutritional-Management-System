@@ -123,6 +123,8 @@ def fetch_all_records(table_name, connection):
         sql = f"SELECT * FROM {table_name}"
         cursor.execute(sql)
         records = cursor.fetchall()
+        print("RECORDS")
+        print(records)
         return records
 
     except oracledb.DatabaseError as e:
