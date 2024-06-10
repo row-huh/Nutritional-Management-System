@@ -46,6 +46,7 @@
             <li><button class="dropdown-item" onclick="changeData(3)">Meal Plan</button></li>
             <li><button class="dropdown-item" onclick="changeData(4)">Food Items</button></li>
             <li><button class="dropdown-item" onclick="changeData(5)">Fitness Data</button></li>
+            <li><button class="dropdown-item" onclick="changeData(6)">Run Custom Query</button></li>
         </ul>
     </div>
     <div class="container">
@@ -582,13 +583,41 @@
                 
             </div>
         </div>
+        <div class="run-form">
+            <h4>Run Custom Query</h4>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSeventeen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseSeventeen" aria-expanded="false"
+                            aria-controls="flush-collapseSeventeen">
+                            Run custom query
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSeventeen" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingSeventeen" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <form class="cols" action="/run_query" method="POST">
+                                <textarea class="form-control my-2" name="description" id="description"></textarea>
+                                <button>Run</button>
+                            </form>
+                        </div>
+                    </div>                
+                    </h2>
+                    <div id="flush-collapseTwentyFive" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingTwentyFive" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            {% if all_fitness_data %}
+                                {{ all_fitness_data | safe }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
     
-
-
-
-
-
 
 
 
@@ -602,6 +631,7 @@
             let mealData = document.querySelector(".meal-form")
             let foodForm = document.querySelector(".food-form")
             let fitnessForm = document.querySelector(".fitness-form")
+            let runcustomquery = document.querySelector(".run-form")
             
             switch (data) {
                 case 1:
@@ -638,6 +668,14 @@
                     nutData.style.display = "none";
                     foodForm.style.display = "none";
                     fitnessForm.style.display = "block";
+                    break;
+                    case 6:
+                    patientData.style.display = "none";
+                    mealData.style.display = "none";
+                    nutData.style.display = "none";
+                    foodForm.style.display = "none";
+                    fitnessForm.style.display = "none";
+                    runcustomquery.style.display = "block"
                     break;
             }
 
