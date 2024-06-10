@@ -153,21 +153,78 @@ def fetch_nutritionists(connection):
 def fetch_fitness_data(connection):
     return fetch_all_records("Fitness_Data", connection)
 
+
 # Delete a record by ID
 def delete_record(table_name, column_name, record_id, connection):
-    try:
-        cursor = connection.cursor()
-        sql = f"DELETE FROM {table_name} WHERE {column_name} = :record_id"
-        cursor.execute(sql, {"record_id": record_id})
-        connection.commit()
-        print(f"Record with ID {record_id} deleted from {table_name}.")
+    cursor = connection.cursor()
 
-    except oracledb.DatabaseError as e:
-        error, = e.args
-        print(f"Error deleting record from {table_name}: {error.message}")
+    # if record which is to be deleted is patient
+    if table_name.lower() == 'patient':
+        try:
 
-    finally:
-        cursor.close()
+            # delete patient records from meal_plan table
+            sql = f"DELETE FROM Meal_plan WHERE patient_id = :record_id"
+            cursor.execute(sql, {"record_id": record_id})
+
+            # delete patient records from fitness_data table
+            sql = f"DELETE FROM fitness_data WHERE patient_id = :record_id"
+            cursor.execute(sql, {"record_id": record_id})
+
+            # delete from patients table
+            sql = f"DELETE FROM {table_name} WHERE {column_name} = :record_id"
+            cursor.execute(sql, {"record_id": record_id})
+
+            connection.commit()
+            print(f"Record with ID {record_id} deleted from {table_name}.")
+            return "Sucess"
+        except oracledb.DatabaseError as e:
+            error, = e.args
+            print(f"Error deleting record from {table_name}: {error.message}")
+            return None
+
+        finally:
+            cursor.close()
+
+    # if record to be deleted in nutritionist
+    elif table_name.lower() == 'nutritionist':
+        try:
+
+            # delete nutritionist records from meal_plan table
+            sql = f"DELETE FROM Meal_plan WHERE nutritionist_id = :record_id"
+            cursor.execute(sql, {"record_id": record_id})
+
+            cursor = connection.cursor()
+            # delete from nutritionist table
+            sql = f"DELETE FROM {table_name} WHERE {column_name} = :record_id"
+            cursor.execute(sql, {"record_id": record_id})
+
+            connection.commit()
+            print(f"Record with ID {record_id} deleted from {table_name}.")
+            return "Success"
+
+        except oracledb.DatabaseError as e:
+            error, = e.args
+            print(f"Error deleting record from {table_name}: {error.message}")
+            return None
+
+        finally:
+            cursor.close()
+    else:
+        try:
+            cursor = connection.cursor()
+            sql = f"DELETE FROM {table_name} WHERE {column_name} = :record_id"
+            cursor.execute(sql, {"record_id": record_id})
+            connection.commit()
+            print(f"Record with ID {record_id} deleted from {table_name}.")
+            return "Sucess"
+        except oracledb.DatabaseError as e:
+            error, = e.args
+            print(f"Error deleting record from {table_name}: {error.message}")
+            return None
+
+        finally:
+            cursor.close()
+
 
 # Update a record by ID
 def update_record(table_name, column_name, record_id, update_data, connection):
@@ -189,8 +246,8 @@ def update_record(table_name, column_name, record_id, update_data, connection):
 
 # Run a custom SQL query
 def run_sql_query(query, connection):
+    cursor = connection.cursor()
     try:
-        cursor = connection.cursor()
         cursor.execute(query)
         results = cursor.fetchall()
         return results
@@ -202,6 +259,9 @@ def run_sql_query(query, connection):
 
     finally:
         cursor.close()
+
+
+
 
 # Example Usage:
 if __name__ == "__main__":
