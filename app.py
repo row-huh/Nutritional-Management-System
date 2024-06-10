@@ -9,12 +9,14 @@ connection = dbsetup.initialize_database()
 
 landing_page = 'dashboard.html'
 
+
+
+
 # landing page
 @app.route('/')
 def index():
-    all_patients = db.fetch_patients(connection)
-    all_patients = h.format_data_as_html_table(all_patients)
-    return render_template(landing_page, message=None, all_patients=all_patients)
+    all_patients, all_nutritionists, all_fitness_data, all_food_items, all_meal_plans = h.html_data(connection)
+    return render_template(landing_page, message=None, all_patients=all_patients, all_nutritionists=all_nutritionists, all_fitness_data=all_fitness_data, all_food_items=all_food_items, all_meal_plans=all_meal_plans)
 
 
 # insert food item
