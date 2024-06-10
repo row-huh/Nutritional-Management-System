@@ -148,6 +148,46 @@ def fetch_food_item_details():
     html_form = h.get_update_html('food_item', data)
     return render_template(new, html_form=html_form)
 
+# fetch update nutritionist form
+@app.route('/fetch_nutritionist_details', methods=["POST"])
+def fetch_nutritionist_details():
+    nutritionist_id = request.form.get('nutritionist_id')
+    query = f"SELECT * FROM Nutritionist WHERE nutritionist_id={nutritionist_id}"
+    data = db.run_sql_query(query, connection)
+    html_form = h.get_update_html('nutritionist', data)
+    return render_template('update.html', html_form=html_form)
+
+
+# fetch update meal plan form 
+@app.route('/fetch_meal_plan_details', methods=["POST"])
+def fetch_meal_plan_details():
+    meal_plan_id = request.form.get('meal_plan_id')
+    query = f"SELECT * FROM Meal_Plan WHERE meal_plan_id={meal_plan_id}"
+    data = db.run_sql_query(query, connection)
+    html_form = h.get_update_html('meal_plan', data)
+    return render_template('update.html', html_form=html_form)
+
+
+# fetch update fitness data form
+@app.route('/fetch_fitness_data_details', methods=["POST"])
+def fetch_fitness_data_details():
+    fitness_data_id = request.form.get('fitness_data_id')
+    query = f"SELECT * FROM Fitness_Data WHERE fitness_data_id={fitness_data_id}"
+    data = db.run_sql_query(query, connection)
+    html_form = h.get_update_html('fitness_data', data)
+    return render_template('update.html', html_form=html_form)
+
+
+# fetch update patient form
+@app.route('/fetch_patient_details', methods=["POST"])
+def fetch_patient_details():
+    patient_id = request.form.get('patient_id')
+    query = f"SELECT * FROM Patient WHERE patient_id={patient_id}"
+    data = db.run_sql_query(query, connection)
+    html_form = h.get_update_html('patient', data)
+    return render_template('update.html', html_form=html_form)
+
+
 
 # update details
 # update food item
