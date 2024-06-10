@@ -63,6 +63,25 @@ def html_data(connection):
     return all_patients, all_nutritionists, all_fitness_data, all_food_items, all_meal_plans
 
 
+def get_update_html(title, data):
+    if title.lower() == 'food_item':
+        html = row_to_html(title, food_item_columns, data)
+        print(html)
+        return html
+    else:
+        print('hehe')
+
+
+def row_to_html(title, columns, data):
+    form_html = f'<form action="/update_{title}" method="post">'
+    for col, value in zip(columns, data[0]):
+        form_html += f'<label for="{col}">{col.capitalize()}:</label><br>'
+        form_html += f'<input type="text" id="{col}" name="{col}" value="{value}"><br><br>'
+    form_html += '<input type="submit" value="Submit">'
+    form_html += "</form>"
+    return form_html
+
+
 def generate_html_table_from_data(title, columns, data):
     if not data:
         return "<p>No data available</p>"

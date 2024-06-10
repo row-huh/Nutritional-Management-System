@@ -428,9 +428,9 @@
                     <div id="flush-collapseFifteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingFifteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="UPDATE">
-                                <input type="text">
-                                <button>Update</button>
+                            <form action="/fetch_food_item_details" method="POST">
+                                <input type="number" id="food_item_id" name="food_item_id">
+                                <button type="submit">Update</button>
                             </form>
                         </div>
                     </div>

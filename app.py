@@ -8,7 +8,7 @@ connection = dbsetup.initialize_database()
 
 
 landing_page = 'dashboard.html'
-
+new = 'update.html'
 
 
 
@@ -136,7 +136,27 @@ def delete_fitness_data():
         return render_template(landing_page, err_message=err_message, message=None)
 
 
+
+# load update.html
+@app.route('/fetch_food_item_details', methods=["POST"])
+def fetch_food_item_details():
+    food_item_id = request.form.get('food_item_id')
+    print(food_item_id)
+    query = f"SELECT * FROM Food_item WHERE food_item_id={food_item_id}"
+    data = db.run_sql_query(query , connection)
+    print(data)
+    html_form = h.get_update_html('food_item', data)
+    return render_template(new, html_form=html_form)
+
+
 # update details
+# update food item
+@app.route('/update_food_item', methods=["POST"])
+def update_food_item():
+    updates = request.form.to_dict()
+
+
+
 
 
 # run query
