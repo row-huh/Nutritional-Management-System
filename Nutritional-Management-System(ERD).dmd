@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Nutritional-Management-System(ERD)" id="EF70067A-7400-3B48-A1CB-C579074F85B5" version="3.5">
+<createdBy>FATTANI COMPUTERS</createdBy>
+<createdTime>2024-06-10 11:14:23 UTC</createdTime>
+<ownerDesignName>Nutritional-Management-System(ERD)</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>EF70067A-7400-3B48-A1CB-C579074F85B5</designId>
+</OSDM_Design>
