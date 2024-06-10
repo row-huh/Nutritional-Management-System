@@ -270,9 +270,15 @@
                     <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="cols" action="submit_meal_plan" method="POST">
-                                <label for="start_date">Enter Start Date
-                                    <input class="form-control my-2" type="date" id="start_date" name="start_date">
+                            <form class="cols" action="POST">
+                                <label for="patient_id">Enter Patient ID
+                                    <input class="form-control my-2" type="number" id="patient_id" name="patient_id">
+                                </label><br>
+                                <label for="nutritionist_id">Enter Nutritionist ID
+                                    <input class="form-control my-2" type="number" id="nutritionist_id" name="nutritionist_id">
+                                </label><br>
+                                <label for="sdate">Enter Start Date
+                                    <input class="form-control my-2" type="date" id="sdate" name="sdate">
                                 </label><br>
                                 <label for="end_date">Enter End Date
                                     <input class="form-control my-2" type="date" id="end_date" name="end_date">
@@ -480,7 +486,14 @@
                     <div id="flush-collapseSeventeen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingSeventeen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
+<<<<<<< HEAD
                             <form class="cols" action="/submit_fitness_data" method="POST">
+=======
+                            <form class="cols" action="POST">
+                                <label for="patient_id">Enter Patient ID
+                                    <input class="form-control my-2" type="number" id="patient_id" name="patient_id">
+                                </label><br>
+>>>>>>> 8870acb (Input ids added)
                                 <label for="weight">Weight
                                     <input class="form-control my-2" type="number" id="weight" name="weight">
                                 </label><br>
