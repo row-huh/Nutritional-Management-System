@@ -107,10 +107,9 @@
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="/get_patient_data">
-                                <label for="patient_id">Enter Patient_ID</label>
-                                <input type="Number" >
-                                <button>Update</button>
+                            <form action="/fetch_patient_details" method="POST">
+                                <input type="number" id="patient_id" name="patient_id">
+                                <button type="submit">Update</button>
                             </form>
                         </div>
                     </div>
@@ -209,9 +208,9 @@
                     <div id="flush-collapseSeven" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="UPDATE">
-                                <input type="number">
-                                <button>Update</button>
+                            <form action="/fetch_nutritionist_details" method="POST">
+                                <input type="number" id="nutritionist_id" name="nutritionist_id">
+                                <button type="submit">Update</button>
                             </form>
                         </div>
                     </div>
@@ -317,9 +316,9 @@
                     <div id="flush-collapseEleven" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="UPDATE">
-                                <input type="text">
-                                <button>Update</button>
+                            <form action="/fetch_meal_plan_details" method="POST">
+                                <input type="number" id="meal_plan_id" name="meal_plan_id">
+                                <button type="submit">Update</button>
                             </form>
                         </div>
                     </div>
@@ -537,9 +536,9 @@
                     <div id="flush-collapseNineteen" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingNineteen" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form action="UPDATE">
-                                <input type="text">
-                                <button>Update</button>
+                            <form action="/fetch_fitness_data_details" method="POST">
+                                <input type="number" id="fitness_data_id" name="fitness_data_id">
+                                <button type="submit">Update</button>
                             </form>
                         </div>
                     </div>
